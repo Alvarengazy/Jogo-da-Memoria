@@ -1,16 +1,16 @@
 (() => {
   'use strict';
 
-  // Elements
+  
   const board = document.getElementById('board');
   const restartBtn = document.getElementById('restartBtn');
-  const themeToggle = document.getElementById('themeToggle');
-  const difficultySelect = document.getElementById('difficultySelect');
-  const difficultyBadge = document.getElementById('difficultyBadge');
+  const newGameBtn = document.getElementById('newGameBtn');
+  const difficultySelect = document.getElementById('difficultySelect'); // opcional (removido no layout minimal)
+  const difficultyBadge = document.getElementById('difficultyBadge'); // pode estar oculto
 
   const movesEl = document.getElementById('moves');
   const timeEl = document.getElementById('time');
-  const bestEl = document.getElementById('best');
+  const bestEl = document.getElementById('best'); // opcional no layout atual
 
   const statsMoves = document.getElementById('statsMoves');
   const statsTime = document.getElementById('statsTime');
@@ -18,11 +18,11 @@
   const statsBestRow = document.getElementById('statsBestRow');
   const playAgainBtn = document.getElementById('playAgainBtn');
 
-  // Modal (Bootstrap)
+  
   const winModal = new bootstrap.Modal(document.getElementById('winModal'));
 
-  // Game state
-  let gridSize = 4; // default 4x4
+  
+  let gridSize = 4; 
   let firstCard = null;
   let secondCard = null;
   let lock = false;
@@ -32,19 +32,20 @@
   let timerInterval = null;
   let seconds = 0;
 
-  // Emoji set (16 unique). For 6x6 we reuse some with variants.
+  
   const baseEmojis = [
     '🍎','🍌','🍉','🍇','🍊','🍓','🍒','🥝',
     '🐶','🐱','🦊','🐼','🦄','🐵','🐸','🐰',
     '⚽','🏀','🎾','🏈','🎲','🎯','🎹','🎧',
   ];
 
-  // Utils
+  
   const fmt = (n) => (n < 10 ? '0' + n : '' + n);
   const formatTime = (s) => `${fmt(Math.floor(s / 60))}:${fmt(s % 60)}`;
   const storageKey = (size) => `memory:v1:best:${size}x${size}`;
 
   function updateBestLabel() {
+    if (!bestEl) return;
     const key = storageKey(gridSize);
     const best = localStorage.getItem(key);
     bestEl.textContent = best ? JSON.parse(best).time + ' • ' + JSON.parse(best).moves + ' mv' : '—';
@@ -72,7 +73,7 @@
   function shuffleAndBuildDeck(size) {
     const needPairs = (size * size) / 2;
     let symbols = _.shuffle(baseEmojis).slice(0, needPairs);
-    // If not enough unique, duplicate with slight variants (not needed with 6x6 given set length, but safe)
+    
     while (symbols.length < needPairs) {
       symbols = symbols.concat(_.shuffle(baseEmojis).slice(0, needPairs - symbols.length));
     }
@@ -121,7 +122,7 @@
     if (lock) return;
     if (tile.classList.contains('is-flipped')) return;
 
-    // Start timer on first action
+    
     if (!timerInterval && moves === 0 && !firstCard) startTimer();
 
     tile.classList.add('is-flipped');
@@ -145,7 +146,7 @@
       }, 350);
       afterMatch();
     } else {
-      // Unflip after delay
+      
       setTimeout(() => {
         firstCard?.classList.remove('is-flipped');
         secondCard?.classList.remove('is-flipped');
@@ -173,11 +174,11 @@
 
   function onWin() {
     stopTimer();
-    // Stats
+    
     statsMoves.textContent = String(moves);
     statsTime.textContent = formatTime(seconds);
 
-    // Best by time then moves
+    
     const key = storageKey(gridSize);
     const current = { time: formatTime(seconds), seconds, moves };
     const prev = localStorage.getItem(key);
@@ -202,34 +203,23 @@
     stopTimer();
     resetHUD();
     gridSize = size;
-    difficultyBadge.textContent = `${gridSize}×${gridSize}`;
+  if (difficultyBadge) difficultyBadge.textContent = `${gridSize}×${gridSize}`;
     buildBoard(gridSize);
     updateBestLabel();
   }
 
-  // UI events
+  
   restartBtn.addEventListener('click', () => restart());
+  newGameBtn && newGameBtn.addEventListener('click', () => restart());
   playAgainBtn.addEventListener('click', () => restart());
-  difficultySelect.addEventListener('change', (e) => {
+  difficultySelect && difficultySelect.addEventListener('change', (e) => {
     const val = Number(e.target.value);
     restart(val);
   });
 
-  // Theme toggle using Bootstrap color modes
-  themeToggle.addEventListener('click', () => {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-bs-theme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-bs-theme', next);
-    localStorage.setItem('memory:v1:theme', next);
-  });
+  
+  // Layout atual permanece em tema claro; sem alternância de tema.
 
-  // Init theme
-  (function initTheme() {
-    const saved = localStorage.getItem('memory:v1:theme');
-    if (saved) document.documentElement.setAttribute('data-bs-theme', saved);
-  })();
-
-  // Start game
+  
   restart(4);
 })();
