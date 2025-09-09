@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="pt-br" data-bs-theme="dark">
+<html lang="pt-br" data-bs-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jogo da Memória</title>
     <meta name="description" content="Jogo da memória interativo com Bootstrap, animações CSS e JavaScript." />
 
-    <!-- Bootstrap 5 -->
+    
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,13 +14,13 @@
       crossorigin="anonymous"
     />
 
-    <!-- App styles -->
+    
     <link rel="stylesheet" href="./styles.css" />
 
-    <!-- Lodash (para embaralhamento) -->
+    
     <script defer src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
-    <!-- Bootstrap JS (modal, tooltips) -->
+    
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -28,71 +28,41 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- App logic -->
+    
     <script defer src="./script.js"></script>
   </head>
   <body>
-    <header class="py-3 border-bottom bg-body">
-      <div class="container d-flex flex-wrap align-items-center gap-2 justify-content-between">
+    <header class="py-4 bg-body">
+      <div class="container d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
-          <h1 class="h4 mb-0">🧠 Jogo da Memória</h1>
-          <span class="badge text-bg-primary" id="difficultyBadge">4×4</span>
+          <h1 class="h4 mb-0 fw-bold text-uppercase letter-wide">MEMORIA 🧠</h1>
+          <span class="visually-hidden" id="difficultyBadge">4×4</span>
         </div>
-
-        <div class="d-flex flex-wrap align-items-center gap-2">
-          <div class="input-group input-group-sm" style="width: 210px;">
-            <span class="input-group-text">Dificuldade</span>
-            <select class="form-select" id="difficultySelect" aria-label="Selecionar dificuldade">
-              <option value="4" selected>4×4 (Fácil)</option>
-              <option value="6">6×6 (Médio)</option>
-            </select>
-          </div>
-
-          <button id="restartBtn" class="btn btn-sm btn-outline-secondary" type="button" title="Reiniciar">
-            Reiniciar
-          </button>
-
-          <button id="themeToggle" class="btn btn-sm btn-outline-primary" type="button" title="Alternar tema">
-            Tema
-          </button>
+        <div class="d-flex align-items-center gap-2">
+          <button id="restartBtn" class="btn btn-warning btn-pill" type="button" title="Restart">Restart</button>
+          <button id="newGameBtn" class="btn btn-outline-secondary btn-pill" type="button" title="New Game">New Game</button>
         </div>
       </div>
     </header>
 
     <main class="container py-4">
-      <section class="row g-3 align-items-center mb-3" aria-label="Painel de informações">
-        <div class="col-sm-auto">
-          <div class="card small shadow-sm">
-            <div class="card-body py-2 px-3 d-flex align-items-center gap-2">
-              <span class="text-secondary">Movimentos:</span>
-              <strong id="moves">0</strong>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-auto">
-          <div class="card small shadow-sm">
-            <div class="card-body py-2 px-3 d-flex align-items-center gap-2">
-              <span class="text-secondary">Tempo:</span>
-              <strong id="time">00:00</strong>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-auto">
-          <div class="card small shadow-sm">
-            <div class="card-body py-2 px-3 d-flex align-items-center gap-2">
-              <span class="text-secondary">Recorde:</span>
-              <strong id="best">—</strong>
-            </div>
-          </div>
-        </div>
+      <section class="d-flex justify-content-center my-5">
+        <div id="board" class="board" aria-label="Tabuleiro"></div>
       </section>
 
-      <section>
-        <div id="board" class="board" aria-label="Tabuleiro"></div>
+      <section class="d-flex justify-content-center gap-3" aria-label="Painel de informações">
+        <div class="stat-pill">
+          <span class="label">TEMPO</span>
+          <strong id="time" class="value">00:00</strong>
+        </div>
+        <div class="stat-pill">
+          <span class="label">MOVIMENTOS</span>
+          <strong id="moves" class="value">0</strong>
+        </div>
       </section>
     </main>
 
-    <!-- Win Modal -->
+    
     <div class="modal fade" id="winModal" tabindex="-1" aria-labelledby="winModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
