@@ -16,6 +16,8 @@ Um jogo da memória responsivo com visual moderno, animações 3D e placar local
 
 Autor: <strong>Alvarengazy</strong>
 
+> <img alt="Image" width="1408" height="903" src="https://private-user-images.githubusercontent.com/221409936/487530455-fa947694-98a8-470f-a67b-8a93d8724fc1.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTc0NjE4NTUsIm5iZiI6MTc1NzQ2MTU1NSwicGF0aCI6Ii8yMjE0MDk5MzYvNDg3NTMwNDU1LWZhOTQ3Njk0LTk4YTgtNDcwZi1hNjdiLThhOTNkODcyNGZjMS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwOTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDkwOVQyMzQ1NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04YzE0ZDdiMGM5NDk5Y2NkNjAwOGU2OTBjNTVkZjE3ZGQ0ODVjN2UwM2JlOTk5NWI5MDNmMzNkNzM0YmQwM2I3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.lC44QJFdrofioDEOrakc1234FjK3T2YiQ6XW7ZCb45A">
+
 </div>
 
 ---
@@ -76,3 +78,4 @@ e:/Memoria/
 
 ## 📜 Licença
 © Alvarengazy
+
