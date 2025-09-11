@@ -10,7 +10,7 @@ Um jogo da memória responsivo com visual moderno, animações 3D e placar local
 <img alt="CSS3" src="https://img.shields.io/badge/CSS3-2862E9?style=for-the-badge&logo=css3&logoColor=white">
 <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=222">
 <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-7A11F5?style=for-the-badge&logo=bootstrap&logoColor=white">
-<img alt="License" src="https://img.shields.io/badge/License-Alvarengazzy-2ea44f?style=for-the-badge">
+<img alt="License" src="https://img.shields.io/badge/License-Alvarengazy-2ea44f?style=for-the-badge">
 
 <br>
 
@@ -80,6 +80,7 @@ e:/Memoria/
 
 ## 📜 Licença
 © Alvarengazy
+
 
 
 
